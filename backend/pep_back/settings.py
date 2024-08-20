@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'api',
-    
+    'pep_back'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'palabras_en_plata.urls'
+ROOT_URLCONF = 'pep_back.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'palabras_en_plata.wsgi.application'
+WSGI_APPLICATION = 'pep_back.wsgi.application'
 
 
 # Database

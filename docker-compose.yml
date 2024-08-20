@@ -1,27 +1,23 @@
 version: '3.9'
 
 services:
-
-  python:
-    image: python:3.8.2-alpine
-    ports: 
-      - "8002:8000"
-    depends_on:
-      - mariadb
-    
-
-  mariadb:
-    image: mariadb
-    restart: always
+  django-pep:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/app  # Monta el directorio backend en /app dentro del contenedor
     ports:
-        - "3307:3306"
-    
+      - "8001:8000"
+    depends_on:
+      - db
+  db:
+    image: postgres:15
     environment:
-        MYSQL_DATABASE: pclaves_db
-        MYSQL_USER: user
-        MYSQL_PASSWORD: user
-        MYSQL_ROOT_PASSWORD: user
-
-
+      POSTGRES_DB: pep
+      POSTGRES_USER: prueba
+      POSTGRES_PASSWORD: prueba
+    ports:
+      - "1234:5432"
 
   
