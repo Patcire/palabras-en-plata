@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'api',
-    'pep_back'
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corshearders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -73,6 +74,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pep_back.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 
 # Database
@@ -124,5 +136,8 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+#User model
+AUTH_USER_MODEL = 'api.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
