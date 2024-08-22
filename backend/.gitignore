@@ -249,3 +249,11 @@ temp/
 *.ntvs*
 *.njsproj
 *.sln
+
+#pep-back
+pep_back/__pycache__
+
+#api
+api/__pycache__
+api/migrations
+
